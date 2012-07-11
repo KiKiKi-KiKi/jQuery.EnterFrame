@@ -9,7 +9,7 @@ jQuery.extend(EnterFrame.prototype,{
     timer   : null,
     init : function(option) {
         this.option = jQuery.extend({}, this.option, option);
-        this.fpsTime = Math.round(1000 / this.option.fps);
+        this.setfps(this.option.fps);
         return this;
     },
     start : function() {
@@ -35,8 +35,12 @@ jQuery.extend(EnterFrame.prototype,{
     setfps : function(n) {
         n = Number(n);
         if(n) {
+            this.option.fps = n;
             this.fpsTime = Math.round(1000 / n);
         }
+    },
+    getfps : function() {
+        return this.option.fps;
     },
     _enterFrame : function() {
         var self = this;
